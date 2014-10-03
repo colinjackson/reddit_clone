@@ -3,5 +3,7 @@ class Sub < ActiveRecord::Base
   validates_uniqueness_of :title
 
   belongs_to :moderator, class_name: "User", inverse_of: :subs
-  has_many :posts, inverse_of: :sub
+  has_many :sub_posts, inverse_of: :sub
+  has_many :posts, through: :sub_posts, source: :post
+
 end

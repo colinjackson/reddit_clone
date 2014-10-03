@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003182857) do
+ActiveRecord::Schema.define(version: 20141003220824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,14 +20,12 @@ ActiveRecord::Schema.define(version: 20141003182857) do
     t.string   "title",      null: false
     t.string   "url"
     t.text     "content"
-    t.integer  "sub_id",     null: false
     t.integer  "author_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
-  add_index "posts", ["sub_id"], name: "index_posts_on_sub_id", using: :btree
 
   create_table "sign_ins", force: true do |t|
     t.integer  "user_id",       null: false
@@ -38,6 +36,17 @@ ActiveRecord::Schema.define(version: 20141003182857) do
 
   add_index "sign_ins", ["session_token"], name: "index_sign_ins_on_session_token", unique: true, using: :btree
   add_index "sign_ins", ["user_id"], name: "index_sign_ins_on_user_id", using: :btree
+
+  create_table "sub_posts", force: true do |t|
+    t.integer  "post_id",    null: false
+    t.integer  "sub_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sub_posts", ["post_id", "sub_id"], name: "index_sub_posts_on_post_id_and_sub_id", unique: true, using: :btree
+  add_index "sub_posts", ["post_id"], name: "index_sub_posts_on_post_id", using: :btree
+  add_index "sub_posts", ["sub_id"], name: "index_sub_posts_on_sub_id", using: :btree
 
   create_table "subs", force: true do |t|
     t.string   "title",        null: false

@@ -1,4 +1,7 @@
 class SubPost < ActiveRecord::Base
-  belongs_to :post
-  belongs_to :sub
+  validates_presence_of :post, :sub
+  validates :post, uniqueness: { scope: :sub }
+
+  belongs_to :post, inverse_of: :sub_posts
+  belongs_to :sub, inverse_of: :sub_posts
 end

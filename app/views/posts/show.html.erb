@@ -9,5 +9,7 @@
 <p>
   <%= link_to("Edit post<br>".html_safe, edit_post_url(@post)) \
     if @post.author == current_user %>
-  <%= link_to "Back to #{@post.sub.title}", sub_url(@post.sub) %>
+  <% @post.subs.each do |sub| %>
+    <%= link_to "Back to #{sub.title}", sub_url(sub) %><br>
+  <% end %>
 </p>
