@@ -1,0 +1,7 @@
+<h1>Make a new subreddit</h1>
+
+<%= render 'form',
+  sub: @sub,
+  form_action: subs_url,
+  form_method: :post,
+  button_verb: "Create" %>

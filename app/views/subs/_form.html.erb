@@ -1,0 +1,18 @@
+<form action="<%= form_action %>" method="POST">
+  <%= auth_input %>
+  <%= put_method if form_method == :put %>
+
+  <% unless sub.title %>
+  <p>
+    <label for="sub_title">Title</label><br>
+    <input type="text" name="sub[title]" id="sub_title">
+  </p>
+  <% end %>
+  <p>
+    <label for="sub_description">Description</label><br>
+    <textarea name="sub[description]"
+      id="sub_description"><%= sub.description %></textarea>
+  </p>
+
+  <button><%= button_verb %> subreddit</button>
+</form>

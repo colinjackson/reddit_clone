@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Reddit</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
 
@@ -12,7 +14,7 @@ Welcome, <%= current_user.name %>!
 <%= button_to "Sign out!", sign_in_url(current_sign_in), method: :delete %>
 <% else %>
 
-<%= link_to "Sign in!", sign_ins_url %>
+<%= link_to "Sign in!", new_sign_in_url %>
 <% end %>
 </div>
 

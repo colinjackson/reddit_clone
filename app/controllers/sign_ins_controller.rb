@@ -1,4 +1,6 @@
 class SignInsController < ApplicationController
+  before_filter :ensure_signed_out, only: [:new, :create]
+  before_filter :ensure_signed_in, only: :destroy
 
   def new
     render :new

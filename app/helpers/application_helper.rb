@@ -7,4 +7,10 @@ module ApplicationHelper
           value=#{ form_authenticity_token }>
     HTML
   end
+
+  def put_input
+    <<-HTML.html_safe
+    <input type="hidden" name="_method" value="PUT" >
+    HTML
+  end
 end

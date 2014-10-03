@@ -1,0 +1,7 @@
+<h1>Add a new post</h1>
+
+<%= render 'form',
+  post: @post,
+  form_action: posts_url,
+  form_method: :post,
+  button_verb: "Post" %>

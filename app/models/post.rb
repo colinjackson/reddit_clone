@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
-  belongs_to :sub
-  belongs_to :author
+  validates_presence_of :title, :sub_id, :author_id
+
+  belongs_to :sub, inverse_of: :posts
+  belongs_to :author, class_name: "User", inverse_of: :posts
 end

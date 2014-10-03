@@ -1,0 +1,26 @@
+<form action="<%= form_action %>" method="POST">
+  <%= auth_input %>
+  <input type="hidden" name="post[sub_id]" value="<%= post.sub_id %>">
+
+  <%= put_input if form_method == :put %>
+
+  <p>
+    <label for="post_title">Title</label><br>
+    <input type="text" name="post[title]"
+      id="post_title" value="<%= post.title %>">
+  </p>
+
+  <p>
+    <label for="post_url">URL</label><br>
+    <input type="text" name="post[url]"
+      id="post_url" value="<%= post.url %>">
+  </p>
+
+  <p>
+    <label for="post_content">Content</label><br>
+    <textarea name="post[content]"
+      id="post_content"><%= post.content %></textarea>
+  </p>
+
+  <button><%= button_verb %> it!</button>
+</form>

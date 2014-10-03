@@ -7,9 +7,10 @@ class User < ActiveRecord::Base
   validates :activated, inclusion: { in: [true, false] }
   validates :password, length: { minimum: 6, allow_nil: true }
 
-
   # Associations
   has_many :sign_ins, inverse_of: :user
+  has_many :subs, foreign_key: :moderator_id, inverse_of: :moderator
+  has_many :posts, foreign_key: :author_id, inverse_of: :author
 
   # Methods
   attr_reader :password

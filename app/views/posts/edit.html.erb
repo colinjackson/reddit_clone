@@ -1,0 +1,7 @@
+<h1>Change <%= @post.title %></h1>
+
+<%= render 'form',
+  post: @post,
+  form_action: post_url(@post),
+  form_method: :put,
+  button_verb: "Change" %>

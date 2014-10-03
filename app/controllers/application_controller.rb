@@ -31,4 +31,12 @@ class ApplicationController < ActionController::Base
     current_sign_in.destroy!
   end
 
+  def ensure_signed_in
+    redirect_to subs_url if !signed_in?
+  end
+
+  def ensure_signed_out
+    redirect_to subs_url if signed_in?
+  end
+
 end

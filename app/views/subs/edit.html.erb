@@ -1,0 +1,7 @@
+<h1>Change <%= @sub.title %></h1>
+
+<%= render 'form',
+  sub: @sub,
+  form_action: sub_url(@sub),
+  form_method: :put,
+  button_verb: "Change" %>

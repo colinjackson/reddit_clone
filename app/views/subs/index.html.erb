@@ -1,0 +1,12 @@
+<h1>Subreddits</h1>
+
+<% @subs.each do |sub| %>
+<p>
+  <%= link_to sub.title, sub_url(sub) %><br>
+  <%= sub.description %>
+</p>
+<% end %>
+
+<p>
+  <%= link_to "Add new subreddit", new_sub_url %>
+</p>

@@ -5,6 +5,16 @@ Reddit::Application.routes.draw do
   resources :users, only: [:new, :create, :show]
   resources :sign_ins, only: [:new, :create, :destroy]
 
+  resources :subs, except: :destroy do
+    member do
+      resources :posts, only: :new
+    end
+
+    collection do
+      resources :posts, except: [:new, :destroy, :index]
+    end
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
