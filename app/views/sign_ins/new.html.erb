@@ -1,0 +1,10 @@
+<h1>Sign In!</h1>
+
+<%= render 'shared/user_form',
+  form_action: sign_ins_url,
+  name: false,
+  button_name: "Sign in" %>
+
+<p>
+  <%= link_to "No account? Sign up!", new_user_url %>
+</p>

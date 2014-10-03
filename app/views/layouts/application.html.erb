@@ -5,6 +5,18 @@
 </head>
 <body>
 
+<div>
+<% if signed_in? %>
+Welcome, <%= current_user.name %>!
+<br>
+<%= button_to "Sign out!", sign_in_url(current_sign_in), method: :delete %>
+<% else %>
+
+<%= link_to "Sign in!", sign_ins_url %>
+<% end %>
+</div>
+
+
 <%= yield %>
 
 </body>

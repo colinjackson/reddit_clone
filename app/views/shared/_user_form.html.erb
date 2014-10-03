@@ -1,0 +1,20 @@
+<form action="<%= form_action %>" method="POST">
+  <%= auth_input %>
+
+  <p>
+    <input type="text" name="user[email]" id="user_email">
+    <label for="user_email">Email</label>
+  </p>
+  <% if name %>
+  <p>
+    <input type="name" name="user[name]" id="user_name">
+    <label for="user_name">Name</label>
+  </p>
+  <% end %>
+  <p>
+    <input type="password" name="user[password]" id="user_password">
+    <label for="user_password">Password</label>
+  </p>
+
+  <button><%= button_name %></button>
+</form>
