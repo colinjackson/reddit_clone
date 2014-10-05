@@ -9,13 +9,11 @@
 
 <% unless @post.comments.empty? %>
   <h2>Comments</h2>
-  <% @post.comments.each do |comment| %>
-    <p>
-      Comment by <%= "#{comment.author.name} " +
-      "#{distance_of_time_in_words(comment.created_at, Time.now)} ago" %><br>
-      <%= comment.content %>
-    <p>
+  <ul>
+  <% @post.top_level_comments.each do |comment| %>
+    <%= render 'comments/comment', comment: comment %>
   <% end %>
+  </ul>
 <% end %>
 
 <p>

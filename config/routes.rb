@@ -17,7 +17,11 @@ Reddit::Application.routes.draw do
     end
   end
 
-  resources :comments, only: :create
+  resources :comments, only: :create do
+    member do
+      get 'nested_comments' => 'comments#new_nested', as: 'new_nested'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
