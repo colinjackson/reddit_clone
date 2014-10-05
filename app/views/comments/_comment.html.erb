@@ -4,9 +4,10 @@
   <%= comment.content %><br>
   <%= link_to "Reply", new_nested_comment_url(comment)  %>
 </li>
-<% unless comment.child_comments.empty? %>
+<% child_comments = @all_comments.where(parent_comment_id: comment.id) %>
+<% unless child_comments.empty? %>
 <ul>
-  <% comment.child_comments.each do |child_comment| %>
+  <% child_comments.each do |child_comment| %>
     <%= render 'comments/comment', comment: child_comment %>
   <% end %>
 </ul>

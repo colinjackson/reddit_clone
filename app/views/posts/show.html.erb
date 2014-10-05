@@ -7,11 +7,12 @@
   <%= @post.content %>
 </p>
 
-<% unless @post.comments.empty? %>
+<% unless @all_comments.empty? %>
   <h2>Comments</h2>
   <ul>
-  <% @post.top_level_comments.each do |comment| %>
-    <%= render 'comments/comment', comment: comment %>
+  <% @all_comments.each do |comment| %>
+    <% next unless comment.parent_comment_id.nil? %>
+    <%= render 'comments/comment', comment: comment, all_comments: @all_comments %>
   <% end %>
   </ul>
 <% end %>
