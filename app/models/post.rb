@@ -9,4 +9,13 @@ class Post < ActiveRecord::Base
   has_many :top_level_comments,
   -> { where("parent_comment_id IS NULL") },
   class_name: 'Comment'
+
+  def comments_by_parent_id
+    comments_by_parent_id = Hash.new([])
+    self.comments.includes(:author).each do |comment|
+      comments_by_parent_id[comment.parent_comment_id] += [comment]
+    end
+
+    comments_by_parent_id
+  end
 end

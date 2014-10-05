@@ -7,13 +7,14 @@
   <%= @post.content %>
 </p>
 
-<% unless @all_comments.empty? %>
+<% unless @comments_by_parent_id[nil].empty? %>
   <h2>Comments</h2>
   <ul>
-  <% @all_comments.each do |comment| %>
-    <% next unless comment.parent_comment_id.nil? %>
-    <%= render 'comments/comment', comment: comment, all_comments: @all_comments %>
-  <% end %>
+    <% @comments_by_parent_id[nil].each do |comment| %>
+      <% next unless comment.parent_comment_id.nil? %>
+      <%= render 'comments/comment', comment: comment,
+        comments_by_parent_id: @comments_by_parent_id %>
+    <% end %>
   </ul>
 <% end %>
 
