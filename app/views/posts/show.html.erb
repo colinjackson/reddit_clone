@@ -6,9 +6,23 @@
 <p>
   <%= @post.content %>
 </p>
+
+<% unless @post.comments.empty? %>
+  <h2>Comments</h2>
+  <% @post.comments.each do |comment| %>
+    <p>
+      Comment by <%= "#{comment.author.name} " +
+      "#{distance_of_time_in_words(comment.created_at, Time.now)} ago" %><br>
+      <%= comment.content %>
+    <p>
+  <% end %>
+<% end %>
+
 <p>
   <%= link_to("Edit post<br>".html_safe, edit_post_url(@post)) \
     if @post.author == current_user %>
+  <%= link_to("Add comment<br>".html_safe, new_comment_url(@post)) \
+    if signed_in? %>
   <% @post.subs.each do |sub| %>
     <%= link_to "Back to #{sub.title}", sub_url(sub) %><br>
   <% end %>

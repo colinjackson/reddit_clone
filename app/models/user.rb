@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :sign_ins, inverse_of: :user
   has_many :subs, foreign_key: :moderator_id, inverse_of: :moderator
   has_many :posts, foreign_key: :author_id, inverse_of: :author
+  has_many :comments, foreign_key: :author_id
 
   # Methods
   attr_reader :password

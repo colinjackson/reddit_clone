@@ -9,12 +9,15 @@ Reddit::Application.routes.draw do
     member do
       resources :posts, only: :new
     end
+  end
 
-    collection do
-      resources :posts, except: [:new, :destroy, :index]
+  resources :posts, except: [:new, :destroy, :index] do
+    member do
+      resources :comments, only: :new
     end
   end
 
+  resources :comments, only: :create
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

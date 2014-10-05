@@ -1,0 +1,13 @@
+<h1>Add a comment</h1>
+
+<form action="<%= comments_url %>" method="POST">
+  <%= auth_input %>
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post_id %>">
+
+  <p>
+    <label for="comment_content">What's on your mind?</label><br>
+    <textarea name="comment[content]" id="comment_content"></textarea>
+  </p>
+
+  <button>Post comment</button>
+</form>
