@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: reddit_development
   pool: 5
-  username: appacademy
+  username: colin
   password:
   host: localhost
 
@@ -12,7 +12,7 @@ test:
   encoding: unicode
   database: reddit_test
   pool: 5
-  username: appacademy
+  username: colin
   password:
   host: localhost
 

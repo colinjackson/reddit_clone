@@ -28,7 +28,7 @@
              name='post[sub_ids][]'
              id="post_sub_ids_<%= sub.title %>"
              value="<%= sub.id %>"
-             <%= "checked" if post.subs.include?(sub) %>>
+             <%= "checked" if post.sub_posts.map(&:sub).include?(sub) %>>
       <label for="post_sub_ids_<%= sub.title %>"><%= sub.title %></label><br>
     <% end %>
   </p>
